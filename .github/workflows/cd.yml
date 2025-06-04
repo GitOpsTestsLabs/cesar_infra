@@ -44,4 +44,3 @@ jobs:
         shell: bash
         run: |
           sudo ansible-playbook playbooks/main.yml --private-key private_key.pem 			
- 

@@ -37,4 +37,6 @@ jobs:
        env:
           ANSIBLE_CONFIG: './ansible.cfg'
           ANSIBLE_HOST_KEY_CHECKING: False
-       run: ansible-playbook playbooks/main.yml --private-key private_key.pem
+       run: |
+         ansible-config  init -c ansible.cfg
+         ansible-playbook playbooks/main.yml --private-key private_key.pem

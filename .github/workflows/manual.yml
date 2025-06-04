@@ -22,12 +22,14 @@ jobs:
        run: |
            sudo apt update
            sudo apt install -y ansible 
-     - name: Install Dependencies
+     - name: Install Collections
        shell: bash
-       run: |
-           ansible-galaxy collection install --upgrade -r ../collections/requirements.yml
-           ansible-galaxy role       install           -r ../roles/requirements.yml			  
+       working-directory: collections
+       run: ansible-galaxy collection install --upgrade -r requirements.yml 
+     - name: Install Roles
+       shell: bash
+       working-directory: roles
+       run: ansible-galaxy role       install           -r requirements.yml			  
      - name: Run Playbook
        shell: bash
-       run: |
-           ansible-playbook playbooks/main.yml --private-key private_key.pem
+       run: ansible-playbook playbooks/main.yml --private-key private_key.pem

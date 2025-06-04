@@ -25,8 +25,8 @@ jobs:
      - name: Install Dependencies
        shell: bash
        run: |
-           sudo ansible-galaxy collection install --upgrade -r collections/requirements.yml
-           sudo ansible-galaxy role       install           -r roles/requirements.yml			  
+           sudo ansible-galaxy collection install --upgrade -r ../collections/requirements.yml
+           sudo ansible-galaxy role       install           -r ../roles/requirements.yml			  
      - name: Run Playbook
        shell: bash
        run: |

@@ -42,13 +42,11 @@ jobs:
                 chmod 600 private_key.pem
          
             - name: Install Ansible
-              shell: bash
               run: |
                 sudo apt update
                 sudo apt install -y ansible 
 				
             - name: Install Dependencies
-              shell: bash
               run: |
                 sudo ansible-galaxy collection install --upgrade -r collections/requirements.yml
                 sudo ansible-galaxy role       install           -r roles/requirements.yml			  

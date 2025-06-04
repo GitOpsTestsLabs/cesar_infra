@@ -26,12 +26,10 @@ jobs:
            sudo apt install -y ansible 
      - name: Install Collections
        shell: bash
-       working-directory: collections
-       run: ansible-galaxy collection install --upgrade -r requirements.yml 
+       run: ansible-galaxy collection install --upgrade -r collections/requirements.yml 
      - name: Install Roles
        shell: bash
-       working-directory: roles
-       run: ansible-galaxy role       install           -r requirements.yml			  
+       run: ansible-galaxy role       install           -r roles/requirements.yml			  
      - name: Run Playbook
        shell: bash
        env:

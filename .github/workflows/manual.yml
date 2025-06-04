@@ -20,8 +20,11 @@ on:
         type: string
 
 jobs:
-    deploy:
-       runs-on: ubuntu-latest
-       steps:
-           - name: Checkout repository
+  test:
+    - name: npm install, build and test
+      run: |
+        npm install
+        npm run build --if-present
+        npm test
+
 	     run: ls

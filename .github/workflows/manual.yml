@@ -33,11 +33,11 @@ jobs:
 
        deploy:
           name: Run Playbook
-          if: github.event.pull_request.merged == true
           runs-on: ubuntu-latest
           environment: production
           steps:
-	   - run: |
+           - name: Checkout repository
+	     run: |
                 echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key.pem
                 chmod 600 private_key.pem
          

@@ -36,8 +36,7 @@ jobs:
           runs-on: ubuntu-latest
           environment: production
           steps:
-            - name: Set up SSH
-	      shell: bash
+	    - name: "Set up SSH"
               run: |
                 echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key.pem
                 chmod 600 private_key.pem

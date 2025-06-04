@@ -1,6 +1,6 @@
 name: "Continous Delivery Workflow"
 on: 
-  pull_request:
+  push:
    branches:
      - main
    types: [closed]

@@ -1,0 +1,60 @@
+# This is a basic workflow that is manually triggered
+
+name: Manual workflow
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
+      name:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Person to greet'
+        # Default value if no value is explicitly provided
+        default: 'World'
+        # Input has to be provided for the workflow to run
+        required: true
+        # The data type of the input
+        type: string
+
+jobs:
+       build:
+         name: Syntax Check
+         runs-on: ubuntu-latest
+         steps:
+           # Leverages action defined here https://github.com/actions/checkout/blob/main/action.yml
+           - name: Checkout repository
+             uses: actions/checkout@main
+           # Leverages action defined here https://github.com/ansible/ansible-lint/blob/main/action.yml
+           - name: Run ansible-lint
+             uses: ansible/ansible-lint@main
+
+       deploy:
+          name: Run Playbook
+          if: github.event.pull_request.merged == true
+          runs-on: ubuntu-latest
+          environment: production
+          steps:
+            - name: Set up SSH
+              run: |
+                echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key.pem
+                chmod 600 private_key.pem
+         
+            - name: Install Ansible
+              shell: bash
+              run: |
+                sudo apt update
+                sudo apt install -y ansible 
+				
+            - name: Install Dependencies
+              shell: bash
+              run: |
+                sudo ansible-galaxy collection install --upgrade -r collections/requirements.yml
+                sudo ansible-galaxy role       install           -r roles/requirements.yml			  
+			
+            - name: Run Playbook
+              shell: bash
+              run: |
+                sudo ansible-playbook playbooks/main.yml --private-key private_key.pem 		
+      run: echo "Hello ${{ inputs.name }}"

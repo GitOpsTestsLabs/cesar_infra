@@ -36,7 +36,7 @@ jobs:
         env:
           ANSIBLE_HOST_KEY_CHECKING: False
         run: |
-	  cat ansible.cfg
-	  echo =================================
-	  ansible-config  init -c ansible.cfg
-          ansible-playbook playbooks/main.yml --private-key private_key.pem
+	 cat ansible.cfg
+         echo =================================
+	 ansible-config  init -c ansible.cfg
+         ansible-playbook playbooks/main.yml --private-key private_key.pem

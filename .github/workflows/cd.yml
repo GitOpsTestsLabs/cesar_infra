@@ -1,4 +1,5 @@
 ---
+name: 'CD - Continuous Delivery'
 on: 
   workflow_dispatch:
     inputs:

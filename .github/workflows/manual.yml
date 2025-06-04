@@ -21,6 +21,8 @@ on:
 
 jobs:
   test:
+    runs-on: ubuntu-latest
+    steps:
     - name: npm install, build and test
       run: |
         npm install

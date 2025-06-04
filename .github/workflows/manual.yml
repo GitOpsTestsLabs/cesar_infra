@@ -1,19 +1,19 @@
 ---
 on: 
-	 workflow_dispatch:
-     inputs:
+  workflow_dispatch:
+    inputs:
        name:
          description: 'CD Manual Testing'
          default: 'Continous Delivery'
          required: true
          type: string
 jobs:
-   deploy:
-     name: Apply Configurations
-     if: github.event.pull_request.merged == true
-     runs-on: ubuntu-latest
-     environment: production
-     steps:
+  deploy:
+    name: Apply Configurations
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
      - name: Set up SSH
        run: |
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key.pem

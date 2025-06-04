@@ -34,10 +34,10 @@ jobs:
       - name: Run Playbook
         shell: bash
         env:
-			    ANSIBLE_CONFIG: ./ansible.cfg
+	  ANSIBLE_CONFIG: ./ansible.cfg
           ANSIBLE_HOST_KEY_CHECKING: False
         run: |
-			    cat ansible.cfg
-				  echo =================================
-			    ansible-config  init -c ansible.cfg
+	  cat ansible.cfg
+	  echo =================================
+	  ansible-config  init -c ansible.cfg
           ansible-playbook playbooks/main.yml --private-key private_key.pem

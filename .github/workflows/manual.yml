@@ -1,3 +1,4 @@
+---
 # This is a basic workflow that is manually triggered
 
 name: Manual workflow
@@ -36,7 +37,7 @@ jobs:
           runs-on: ubuntu-latest
           environment: production
           steps:
-	    - name: "Set up SSH"
+	    - name: Set up SSH
               run: |
                 echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key.pem
                 chmod 600 private_key.pem
@@ -55,5 +56,4 @@ jobs:
             - name: Run Playbook
               shell: bash
               run: |
-                sudo ansible-playbook playbooks/main.yml --private-key private_key.pem 		
-      run: echo "Hello ${{ inputs.name }}"
+                sudo ansible-playbook playbooks/main.yml --private-key private_key.pem

@@ -35,7 +35,7 @@ jobs:
      - name: Run Playbook
        shell: bash
        env:
-           ANSIBLE_COLLECTIONS_PATHS=collections
-           ANSIBLE_ROLES_PATHS=roles                
+           ANSIBLE_COLLECTIONS_PATHS: collections
+           ANSIBLE_ROLES_PATHS: roles                
            ANSIBLE_HOST_KEY_CHECKING: False
        run: ansible-playbook playbooks/main.yml --private-key private_key.pem

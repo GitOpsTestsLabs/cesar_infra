@@ -21,6 +21,7 @@ on:
 
 jobs:
   test:
+    name: "Build Container"
     runs-on: ubuntu-latest
     steps:
     - name: npm install, build and test

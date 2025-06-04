@@ -1,23 +1,23 @@
-	 ---
-     on: 
-	     workflow_dispatch:
-         inputs:
-             name:
-               description: 'CD Manual Testing'
-               default: 'Continous Delivery'
-               required: true
-               type: string
+---
+on: 
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'CD Manual Testing'
+        default: 'Continous Delivery'
+        required: true
+        type: string
 
-     jobs:
-       build:
-         name: Syntax Check
-         runs-on: ubuntu-latest
-         steps:
-           # Leverages action defined here https://github.com/actions/checkout/blob/main/action.yml
-           - name: Checkout repository
-             uses: actions/checkout@main
-           # Leverages action defined here https://github.com/ansible/ansible-lint/blob/main/action.yml
-           - name: Run ansible-lint
-             uses: ansible/ansible-lint@main
+jobs:
+  build:
+    name: Syntax Check
+    runs-on: ubuntu-latest
+    steps:
+    # Leverages action defined here https://github.com/actions/checkout/blob/main/action.yml
+    - name: Checkout repository
+      uses: actions/checkout@main
+    # Leverages action defined here https://github.com/ansible/ansible-lint/blob/main/action.yml
+    - name: Run ansible-lint
+      uses: ansible/ansible-lint@main
 
   

@@ -1,0 +1,5 @@
+- hosts: "{{ web_server | default('serverb199.lab.example.com') }}"
+  roles:
+   - geerlingguy.apache
+   - geerlingguy.php
+ 

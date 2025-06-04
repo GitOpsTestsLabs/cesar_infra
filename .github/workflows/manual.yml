@@ -37,14 +37,16 @@ jobs:
           environment: production
           steps:
             - name: Set up SSH
+	      shell: bash
               run: |
                 echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key.pem
                 chmod 600 private_key.pem
          
             - name: Install Ansible
+	      shell: bash
               run: |
                 sudo apt update
-                sudo apt install -y ansible 
+                sudo apt install -y ansible
 				
             - name: Install Dependencies
               run: |

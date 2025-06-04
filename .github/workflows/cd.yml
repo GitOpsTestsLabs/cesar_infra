@@ -1,11 +1,12 @@
+name: "Continous Delivery Workflow"
 on: 
- pull_request:
+  pull_request:
    branches:
      - main
    types: [closed]
 
 jobs:
- build:
+  build:
    name: Syntax Check
    runs-on: ubuntu-latest
    steps:
@@ -16,7 +17,7 @@ jobs:
      - name: Run ansible-lint
        uses: ansible/ansible-lint@main
 
- deploy:
+  deploy:
     name: Run Playbook
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest

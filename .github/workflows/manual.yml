@@ -20,27 +20,25 @@ on:
         type: string
 
 jobs:
-       deploy:
-          name: Run Playbook
-          runs-on: ubuntu-latest
-          environment: production
-          steps:
+    deploy:
+       name: Run Playbook
+       runs-on: ubuntu-latest
+       environment: production
+       steps:
+       
            - name: Checkout repository
 	     run: |
                 echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key.pem
                 chmod 600 private_key.pem
-         
            - name: Install Ansible
 	     shell: bash
              run: |
                 sudo apt update
                 sudo apt install -y ansible
-				
            - name: Install Dependencies
              run: |
                 sudo ansible-galaxy collection install --upgrade -r collections/requirements.yml
-                sudo ansible-galaxy role       install           -r roles/requirements.yml			  
-			
+                sudo ansible-galaxy role       install           -r roles/requirements.yml			  	
            - name: Run Playbook
              shell: bash
              run: |

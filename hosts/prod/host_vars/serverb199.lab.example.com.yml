@@ -12,4 +12,7 @@ network_connections:
      address:
        - "192.168.56.185/24"  
    state: up
+<<<<<<< HEAD
 
+=======
+>>>>>>> e625bc7 (GitOps: Creando Repositorio)

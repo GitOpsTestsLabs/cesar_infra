@@ -87,4 +87,3 @@ logging_flows:
  - name: flow
    inputs: [system_input]
    outputs: [relp_client]
-

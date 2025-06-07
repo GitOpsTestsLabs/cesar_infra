@@ -1,3 +1,4 @@
+--- 
 firewall:
  - port: 44321/tcp
    state: enabled
@@ -23,7 +24,7 @@ php_packages_state: "present"
 php_install_recommends: true
 php_executable: "php"
 php_packages:
-   -- php
+   - php
    - php-cli
    - php-common
    - php-devel
@@ -59,4 +60,3 @@ php_opcache_validate_timestamps: "1"
 php_opcache_revalidate_path: "0"
 php_opcache_revalidate_freq: "2"
 php_opcache_max_file_size: "0"
-

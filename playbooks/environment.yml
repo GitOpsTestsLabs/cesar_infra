@@ -25,7 +25,7 @@
          enabled=1
       force: yes
   - name: Rebuild RPM Database
-    command: "sudo rpm --rebuilddb"
+    command: "rpm --rebuilddb"
     become: true        
 - hosts: all
   roles:
@@ -39,4 +39,3 @@
     - fedora.linux_system_roles.tlog
     - fedora.linux_system_roles.sshd
     - fedora.linux_system_roles.vpn
-
